@@ -14,49 +14,13 @@ import sqlite3
 app = Flask(__name__)
 
 
-conn = sqlite3.connect('blog.db')
+#conn = sqlite3.connect('blog.db')
 
-c = conn.cursor()
-
-
+#c = conn.cursor()
 
 
-"""
-
-c.execute('''CREATE TABLE users
-            (user_id text, password text)''')
-            
-       
-c.execute("INSERT INTO users VALUES ('admin','blogferr10!')")
-# Save (commit) the changes
-conn.commit()
-"""
-for row in c.execute("SELECT user_id, password from users"):
-    print(row)
-#e.encrypt_store_password('admin')   
-    
-#This commented out section is how you can hash and update a password    
-"""
-c.execute("SELECT password from users where user_id = 'admin'")
-val = c.fetchone()
-print(val[0])
 
 
-h = blake2b()
-b = bytes(val[0], 'utf-8')
-h.update(b)
-print(h.hexdigest())
-
-
-#Update password to the hash value
-c.execute("UPDATE users set password = '{}' where user_id = '{}'".format(h.hexdigest(), 'admin'))
-conn.commit()
-"""
-
-c.execute("UPDATE users set password = '{}' where user_id = '{}'".format('flaskword', 'admin'))
-conn.commit()
-
-conn.close()
 
 
 
