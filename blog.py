@@ -19,8 +19,7 @@ app = Flask(__name__)
 #c = conn.cursor()
 
 
-
-
+#conn.close()
 
 
 
@@ -42,7 +41,13 @@ def page2():
     
 @app.route('/blog_post')
 def blog_post():
-    return render_template('blog_post.html')
+    conn = sqlite3.connect('blog.db')
+    c = conn.cursor()
+    c.execute("SELECT * from blog_posts;")
+    vals = []
+    vals = c.fetchall()
+    c.close()
+    return render_template('blog_post.html', title = vals[0][1] ,content = vals[0][3])
     
     
 @app.route('/user')
@@ -80,19 +85,6 @@ def register():
 
     
 
-
-
-
-
-@app.route('/user/<username>')
-def profile(username):
-    return '{}\'s profile'.format(escape(username))
-
-with app.test_request_context():
-    print(url_for('index'))
-    print(url_for('login'))
-    print(url_for('login', next='/'))
-    print(url_for('profile', username='John Doe'))
 
 
 
