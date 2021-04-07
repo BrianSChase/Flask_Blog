@@ -36,8 +36,8 @@ body {
   padding-left: 20px;
 }
 
-/* Fake image */
-.fakeimg {
+/* Temporary Place holder, will be replaced with image later */
+.placeholder {
   background-color: #aaa;
   width: 100%;
   padding: 20px;
@@ -65,7 +65,7 @@ body {
   margin-top: 20px;
 }
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+
 @media screen and (max-width: 800px) {
   .leftcolumn, .rightcolumn {   
     width: 100%;
@@ -85,21 +85,21 @@ body {
     <div class="box">
       <a href="http://127.0.0.1:5000/blog_post"> {% block post1 %}{% endblock %} </a>
       <h5>Title description, Jan 28, 2021</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
+      <div class="placeholder" style="height:200px;">Image</div>
       <p>Some text..</p>
   
     </div>
     <div class="box">
       <a href="http://127.0.0.1:5000/blog_post"> {% block post2 %}{% endblock %} </a>
       <h5>Title description, Feb $, 2021</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
+      <div class="placeholder" style="height:200px;">Image</div>
       <p>Some text..</p>
     </div>
 	
     <div class="box">
       <a href="http://127.0.0.1:5000/blog_post"> {% block post3 %}{% endblock %} </a>
       <h5>Title description, Feb 11, 2021</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
+      <div class="placeholder" style="height:200px;">Image</div>
       <p>Some text..</p>
     </div>	
 	
@@ -109,7 +109,7 @@ body {
   <div class="rightcolumn">
     <div class="box">
       <h2>About Me</h2>
-      <div class="fakeimg" style="height:100px;">Image</div>
+      <div class="placeholder" style="height:100px;">Image</div>
       <p>Some text about me pending</p>
     </div>
 
