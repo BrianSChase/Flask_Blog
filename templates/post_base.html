@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-/* Add a gray background color with some padding */
+
 body {
   font-family: Arial;
   padding: 20px;
@@ -22,7 +22,6 @@ body {
   background: #C5C6C7;
 }
 
-/* Create two unequal columns that floats next to each other */
 /* Left column */
 .leftcolumn {   
   float: left;
@@ -43,8 +42,8 @@ body {
   padding: 20px;
 }
 
-/* Add a card effect for articles */
-.card {
+/* Box for content */
+.box {
    background-color: #C5C6C7;
    padding: 20px;
    margin-top: 20px;
@@ -65,7 +64,7 @@ body {
   margin-top: 20px;
 }
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+
 @media screen and (max-width: 800px) {
   .leftcolumn, .rightcolumn {   
     width: 100%;
@@ -82,7 +81,7 @@ body {
 
 <div class="row">
   <div class="leftcolumn">
-    <div class="card">
+    <div class="box">
       <h2>{% block title %}{% endblock %}</h2>
       <h5>{% block post_description %}{% endblock %}</h5>
       <div class="fakeimg" style="height:200px;">Image</div>
@@ -92,13 +91,13 @@ body {
 	
   </div>
   <div class="rightcolumn">
-    <div class="card">
+    <div class="box">
       <h2>About Me</h2>
       <div class="fakeimg" style="height:100px;">Image</div>
       <p>Some text about me</p>
     </div>
 
-    <div class="card">
+    <div class="box">
       <h3>Follow Me</h3>
       <p>Some text..</p>
     </div>
