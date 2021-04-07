@@ -10,16 +10,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from hashlib import blake2b
 from markupsafe import escape
 import sqlite3
+from create_post import *
 
 app = Flask(__name__)
 
-
-#conn = sqlite3.connect('blog.db')
-
-#c = conn.cursor()
-
-
-#conn.close()
 
 
 
@@ -38,9 +32,13 @@ def index():
 @app.route('/page2')
 def page2():
     return render_template('page2.html')
-    
+   
+
+#When a user clicks on a link to a post, there will have to be a way to determine which row to take from the database
+#for now the page can always be /blog_post, but the vals array will be loaded with the data based on which article it is.  
 @app.route('/blog_post')
 def blog_post():
+    """Gets all relevant info from the database and renders a template with it. """
     conn = sqlite3.connect('blog.db')
     c = conn.cursor()
     c.execute("SELECT * from blog_posts;")
@@ -88,3 +86,28 @@ def register():
 
 
 
+
+"""
+@app.route('/create_post.py', methods=['POST']) 
+def new_post():
+    create_post()
+    return render_template('index.html')
+
+"""
+@app.route('/create', methods=('GET', 'POST'))
+def create():
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        error = None
+
+        if not title:
+            error = 'Title is required.'
+
+        if error is not None:
+            flash(error)
+        else:
+            print(title)
+            print(content)
+
+    return render_template('create.html')    
