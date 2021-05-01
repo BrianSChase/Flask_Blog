@@ -11,7 +11,8 @@ from hashlib import blake2b
 from markupsafe import escape
 import sqlite3
 from create_post import *
-
+from datetime import date
+from manage_db.py import *
 app = Flask(__name__)
 
 
@@ -85,20 +86,13 @@ def register():
 
 
 
-
-
-"""
-@app.route('/create_post.py', methods=['POST']) 
-def new_post():
-    create_post()
-    return render_template('index.html')
-
-"""
+#currently printing input for testing, next, move input into db
 @app.route('/create', methods=('GET', 'POST'))
 def create():
+    val = []
     if request.method == 'POST':
         title = request.form['title']
-        content = request.form['content']
+        body = request.form['body']
         error = None
 
         if not title:
@@ -107,7 +101,10 @@ def create():
         if error is not None:
             flash(error)
         else:
-            print(title)
-            print(content)
+            add_post(title, body)
 
+            
     return render_template('create.html')    
+
+
+  
