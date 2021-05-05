@@ -12,7 +12,7 @@ from markupsafe import escape
 import sqlite3
 from create_post import *
 from datetime import date
-from manage_db.py import *
+from manage_db import *
 app = Flask(__name__)
 
 
@@ -101,7 +101,11 @@ def create():
         if error is not None:
             flash(error)
         else:
-            add_post(title, body)
+            conn = sqlite3.connect('blog.db')
+            c = conn.cursor()
+            c.execute("INSERT INTO posts VALUES(NULL, ?, ?, ?);", (title, date.today(), body))
+            conn.commit()
+            conn.close()
 
             
     return render_template('create.html')    
