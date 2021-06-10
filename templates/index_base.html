@@ -77,34 +77,47 @@ body {
 <body>
 
 <div class="header">
-  <h2>Blog name pending</h2>
+  <h2>Blog name here</h2>
 </div>
 <!-- Later update this to get the x number of recent posts from a the database -->
 <div class="row">
   <div class="leftcolumn">
     <div class="box">
-      <a href="http://127.0.0.1:5000/blog_post"> {% block post1 %}{% endblock %} </a>
+      <a id="post1" href="http://127.0.0.1:5000/blog_post1"> {% block post1 %}{% endblock %} </a>
       <h5>Title description, Jan 28, 2021</h5>
       <div class="placeholder" style="height:200px;">Image</div>
       <p>Some text..</p>
   
     </div>
     <div class="box">
-      <a href="http://127.0.0.1:5000/blog_post"> {% block post2 %}{% endblock %} </a>
+      <a id="post2" href="http://127.0.0.1:5000/blog_post2"> {% block post2 %}{% endblock %} </a>
       <h5>Title description, Feb $, 2021</h5>
       <div class="placeholder" style="height:200px;">Image</div>
       <p>Some text..</p>
     </div>
 	
     <div class="box">
-      <a href="http://127.0.0.1:5000/blog_post"> {% block post3 %}{% endblock %} </a>
+      <a id="post3" href="http://127.0.0.1:5000/blog_post3"> {% block post3 %}{% endblock %} </a>
       <h5>Title description, Feb 11, 2021</h5>
       <div class="placeholder" style="height:200px;">Image</div>
       <p>Some text..</p>
     </div>	
 	
+	<button onclick="nextPage()">Next Page</button>
 
-	
+
+	<script>
+	var index = [1,2,3];
+	function nextPage() {
+	  for(var i = 0; i < index.length; i++){
+		index[i] += index.length;}
+	  document.getElementById("post1").href = "http://127.0.0.1:5000/blog_post" + index[0].toString();
+	  document.getElementById("post2").href = "http://127.0.0.1:5000/blog_post" + index[1].toString();
+	  document.getElementById("post3").href = "http://127.0.0.1:5000/blog_post" + index[2].toString();
+	 
+	}
+	</script>
+
   </div>
   <div class="rightcolumn">
     <div class="box">
