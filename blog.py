@@ -37,8 +37,8 @@ def page2():
 
 #When a user clicks on a link to a post, there will have to be a way to determine which row to take from the database
 #for now the page can always be /blog_post, but the vals array will be loaded with the data based on which article it is.  
-@app.route('/blog_post')
-def blog_post():
+@app.route('/blog_post<id>')
+def blog_post(id):
     """Gets all relevant info from the database and renders a template with it. """
     conn = sqlite3.connect('blog.db')
     c = conn.cursor()
@@ -46,8 +46,10 @@ def blog_post():
     vals = []
     vals = c.fetchall()
     c.close()
-    return render_template('blog_post.html', title = vals[0][1] ,content = vals[0][3])
-    
+    index = int(id)
+    return render_template('blog_post.html', title = vals[index][1] ,content = vals[index][3])
+  
+
     
 @app.route('/user')
 def user():
@@ -86,7 +88,7 @@ def register():
 
 
 
-#currently printing input for testing, next, move input into db
+
 @app.route('/create', methods=('GET', 'POST'))
 def create():
     val = []
