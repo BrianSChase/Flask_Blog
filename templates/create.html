@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Create Post</h1>
+<!--
+<form action="/create_post.py" method = "post">
+<label for="title">Enter post title:</label>
+<input type = "text" id="title" name="title">  <br> <br>
+
+<label for="content">Create blog content:</label>
+<textarea id="content" name="content" rows="10" cols="100">
+  Type content here
+  </textarea>
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+-->
+<!--
+  <form action="/create_post.py" method="post">
+    <label for="title">Title</label>
+    <input name="title" id="title" name = "title" value=" " required> <br><br>
+    <label for="content">content</label>
+    <textarea name="content" id="content" name = "content" rows="4" cols="50"> </textarea>
+    <input type="submit" value="Save">
+  </form>
+
+</body>
+</html>
+
+-->
+
+
+  <h1>New Post</h1>
+
+
+  <form method="post">
+    <label for="title">Title</label>
+    <input name="title" id="title" value="{{ request.form['title'] }}" required>
+    <label for="body">Body</label>
+    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+
